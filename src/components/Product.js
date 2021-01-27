@@ -1,5 +1,9 @@
+import {useSelector, useDispatch} from 'react-redux';
+import {changeNumProd} from '../actions';
+
 const Product = ({product}) => {
     console.log(product);
+    const dispatch=useDispatch();
     return ( 
         <div className="product">
             <div className="product-name">{product.name}</div>
@@ -7,7 +11,7 @@ const Product = ({product}) => {
                 <img src={product.image} alt=""/>
                 </div>
             <div className="product-cost">{product.cost}</div>
-            <button className="product-button">Add</button>
+            <button className="product-button" onClick={() => dispatch(changeNumProd(1))}>Add</button>
         </div>
      );
 }
