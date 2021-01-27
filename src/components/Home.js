@@ -17,7 +17,7 @@ const Home = () => {
             return res.json()
         })
         .then(res=>{
-          console.log(res);
+        //   console.log(res);
           setData(res);  
         })
         .catch(err=>console.log(err));

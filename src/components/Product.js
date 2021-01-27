@@ -1,9 +1,15 @@
 import {useSelector, useDispatch} from 'react-redux';
-import {changeNumProd} from '../actions';
+import {changeNumProd,addBasket,removeBasket} from '../actions';
 
 const Product = ({product}) => {
-    console.log(product);
     const dispatch=useDispatch();
+    const addToBusket = (product) => {
+        dispatch(changeNumProd(1));
+        dispatch(addBasket(product));
+    }
+    // const removeFromBasket =(id) =>{
+    //     dispatch(removeBasket(id))
+    // }
     return ( 
         <div className="product">
             <div className="product-name">{product.name}</div>
@@ -11,7 +17,8 @@ const Product = ({product}) => {
                 <img src={product.image} alt=""/>
                 </div>
             <div className="product-cost">{product.cost}</div>
-            <button className="product-button" onClick={() => dispatch(changeNumProd(1))}>Add</button>
+            <button className="product-button" onClick={() => addToBusket(product)}>Add</button>
+            {/* <button onClick={()=> removeFromBasket(product.id)}>Remove test</button> */}
         </div>
      );
 }

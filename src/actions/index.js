@@ -4,3 +4,17 @@ export const changeNumProd = (num) =>{
             payload: num
         } 
 }
+
+export const addBasket = (product) =>{
+    return{
+            type: "ADD_BASKET",
+            payload: product
+        } 
+}
+
+export const removeBasket = (id) =>{
+    return{
+            type: "REMOVE_BASKET",
+            payload: id
+        } 
+}
