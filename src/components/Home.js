@@ -4,7 +4,7 @@ import Product from './Product';
 const Home = () => {
 
     const [data, setData] = useState(null);
-    const [error, setError] =useState(null);
+    // const [error, setError] =useState(null);
     const url='http://127.0.0.1:8000/api/products';
 
     useEffect(()=>{
