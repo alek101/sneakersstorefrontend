@@ -5,7 +5,6 @@ const basketReducer = (state = [], action) => {
       case "ADD_BASKET": 
         let isExist=false;
         const product=action.payload;
-        console.log("product",product,"action payload",action.payload);
         for (let purchase of state) {
             if(purchase.product_id===product.id)
             {
