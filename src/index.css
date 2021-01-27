@@ -24,3 +24,13 @@ code {
 .links a{
   margin-right: 10px;
 }
+
+.product-image img{
+  width: 300px;
+  height: auto;
+}
+
+.product-list{
+  display: flex;
+  flex-wrap: wrap;
+}

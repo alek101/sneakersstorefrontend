@@ -1,4 +1,6 @@
 import {useState, useEffect} from 'react';
+import Product from './Product';
+
 const Home = () => {
 
     const [data, setData] = useState(null);
@@ -19,10 +21,21 @@ const Home = () => {
           setData(res);  
         })
         .catch(err=>console.log(err));
+
+        // return () =>abortController.abort();
     },[])
 
+    const products=(data)? data.map(product=><Product key={product.id} product={product} />):<div className="loading">Loading...</div>;
+
     return ( 
-        <h1>Products</h1>
+        <div className="products">
+            <h1>Products</h1>
+            <div className="product-list">
+                {products}
+            </div>
+            
+        </div>
+        
 
      );
 }
