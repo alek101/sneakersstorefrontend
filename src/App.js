@@ -1,13 +1,14 @@
-import {useState, useEffect} from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+
+import {createStore} from 'redux';
+import {Provider} from 'react-redux';
+import allReducers from './reducers';
+
+import useFetchData from './useFetchData';
 import Header from './components/Header';
 import Home from './components/Home';
 import Purchase from './components/Purchase';
 import Past from './components/Past';
-import {createStore} from 'redux';
-import allReducers from './reducers';
-import {Provider} from 'react-redux';
-import useFetchData from './useFetchData';
 
 const store = createStore(
   allReducers,

@@ -1,29 +1,6 @@
-// import {useState, useEffect} from 'react';
 import Product from './Product';
 
 const Home = ({data}) => {
-
-    // const [data, setData] = useState(null);
-    // // const [error, setError] =useState(null);
-    // const url='http://127.0.0.1:8000/api/products';
-
-    // useEffect(()=>{
-    //     const abortController=new AbortController();
-    //     fetch(url, {signal: abortController.signal})
-    //     .then(res=>{
-    //         if(!res.ok){
-    //             throw Error(`Couldn't fetch the data`);
-    //         }
-    //         return res.json()
-    //     })
-    //     .then(res=>{
-    //     //   console.log(res);
-    //       setData(res);  
-    //     })
-    //     .catch(err=>console.log(err));
-
-    //     // return () =>abortController.abort();
-    // },[])
 
     const products=(data)? data.map(product=><Product key={product.id} product={product} />):<div className="loading">Loading...</div>;
 
@@ -33,10 +10,7 @@ const Home = ({data}) => {
             <div className="product-list">
                 {products}
             </div>
-            
         </div>
-        
-
      );
 }
  
