@@ -18,3 +18,17 @@ export const removeBasket = (id) =>{
             payload: id
         } 
 }
+
+export const decreaseBasket = (id) =>{
+    return{
+            type: "DECREASE_BASKET",
+            payload: id
+        } 
+}
+
+export const increaseBasket = (id) =>{
+    return{
+            type: "INCREASE_BASKET",
+            payload: id
+        } 
+}

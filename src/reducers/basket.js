@@ -17,6 +17,8 @@ const basketReducer = (state = [], action) => {
         {
             let new_purchase={
                 product_id:product.id,
+                name: product.name,
+                image: product.image,
                 amount:1,
                 cost:Number(product.cost)
             }
@@ -26,6 +28,33 @@ const basketReducer = (state = [], action) => {
       case "REMOVE_BASKET":
           state=state.filter(purchase=>purchase.product_id!==action.payload);
         return state;
+      case "DECREASE_BASKET":
+        for (let purchase of state) {
+          if(purchase.product_id===action.payload)
+          {
+              if(purchase.amount>1)
+              {
+                purchase.cost-=purchase.cost/purchase.amount;
+                purchase.amount--;
+                state=state.filter(c=>true);
+              }
+              else
+              {
+                state=state.filter(purchase=>purchase.product_id!==action.payload);
+              }
+          }
+        }
+        return state;
+      case "INCREASE_BASKET":
+          for (let purchase of state) {
+            if(purchase.product_id===action.payload)
+            {
+              purchase.cost+=purchase.cost/purchase.amount;
+              purchase.amount++;
+              state=state.filter(c=>true);
+            }
+        }
+      return state;
       default:
         return state;
     }
