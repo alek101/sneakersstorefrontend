@@ -58,32 +58,17 @@ const Purchase = () => {
     }
 
     const sendBasketIntoLocalStorage = (basket) => {
-            let totalCost=0;
-            for (const item of basket) {
-                item.date=new Date();
-                totalCost+=item.cost
+        let pastPurchases=[];
+        if(localStorage.getItem('purchase')) pastPurchases=JSON.parse(localStorage.getItem('purchase'));
+            const totalCost=basket.reduce((total,purchase)=>total+purchase.cost,0);
+            const date=new Date();
+            const newPurchase={
+                basket:basket,
+                totalCost:totalCost,
+                date:date
             }
-        
-        if(localStorage.getItem('purchase'))
-            {
-                const pastPurchases=JSON.parse(localStorage.getItem('purchase'));
-                const newPurchase={
-                    basket:basket,
-                    totalCost:totalCost
-                }
-                pastPurchases.push(newPurchase);
-                localStorage.setItem('purchase',JSON.stringify(pastPurchases));
-            }
-            else
-            {
-                const pastPurchases=[];
-                const newPurchase={
-                    basket:basket,
-                    totalCost:totalCost
-                }
-                pastPurchases.push(newPurchase);
-                localStorage.setItem('purchase',JSON.stringify(pastPurchases));
-            }
+            pastPurchases.push(newPurchase);
+            localStorage.setItem('purchase',JSON.stringify(pastPurchases));
             clearEntireBasket(numInBasket);
     }
 

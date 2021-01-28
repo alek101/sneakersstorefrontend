@@ -5,15 +5,14 @@ const Past = () => {
     {
         purchaseTables = pastPurchases.map((purchase,i)=>{
             return(
-                <div className="past-purchase">
-                    <table className="purchase-table" key={i}>
+                <div className="past-purchase" key={i}>
+                    <table className="purchase-table" >
                         <thead>
                             <tr>
                                 <th>Image</th>
                                 <th>Name of Product</th>
                                 <th>Amount</th>
                                 <th>Cost</th>
-                                <th>Date</th>
                             </tr> 
                         </thead>
                         <tbody>
@@ -24,13 +23,12 @@ const Past = () => {
                                         <td>{item.name}</td>
                                         <td>{item.amount}</td>
                                         <td>{item.cost}</td>
-                                        <td>{item.date.slice(0,10)}</td>
                                     </tr>  
                                 )
                             })}
                         </tbody>
                     </table>
-                    <div className="belowe-table">Total cost of the purchase was: {purchase.totalCost}</div>
+                    <div className="belowe-table">Total cost of the purchase on {purchase.date.slice(0,10)} was {purchase.totalCost}</div>
                 </div>
             )
         });
