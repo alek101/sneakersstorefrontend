@@ -15,7 +15,7 @@ const Home = ({data}) => {
                 <input type="text" name="name_filter" id="name_filter"
                         onKeyUp={(e)=>{setNameFilter(e.target.value)}}/>  
             </div>
-            <div>
+            <div className="product-list-body">
                 <h1>We are offering:</h1>
                 <div className="product-list">
                     {products}

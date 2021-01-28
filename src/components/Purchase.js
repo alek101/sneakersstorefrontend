@@ -70,13 +70,13 @@ const Purchase = () => {
     let itemRows = itemsBasket.map(item=>{
         return(
             <tr key={item.product_id}>
-                <th><img src={item.image} alt="" className="small-img"/></th>
-                <th>{item.name}</th>
-                <th>{item.amount}</th>
-                <th>{item.cost}</th>
-                <th><button onClick={()=>decreaseFromBasket(item.product_id)}>-</button></th>
-                <th><button onClick={()=>increaseToBasket(item.product_id)}>+</button></th>
-                <th><button onClick={()=>removeFromBasket(item.amount,item.product_id)}>X</button></th>
+                <td><img src={item.image} alt="" className="small-img"/></td>
+                <td>{item.name}</td>
+                <td>{item.amount}</td>
+                <td>{item.cost}</td>
+                <td><button onClick={()=>decreaseFromBasket(item.product_id)}>-</button></td>
+                <td><button onClick={()=>increaseToBasket(item.product_id)}>+</button></td>
+                <td><button onClick={()=>removeFromBasket(item.amount,item.product_id)}>X</button></td>
             </tr>  
         )
     });

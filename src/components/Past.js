@@ -6,11 +6,11 @@ const Past = () => {
         itemRows = pastPurchases.map((item,i)=>{
             return(
                 <tr key={i}>
-                    <th><img src={item.image} alt="" className="small-img"/></th>
-                    <th>{item.name}</th>
-                    <th>{item.amount}</th>
-                    <th>{item.cost}</th>
-                    <th>{item.date.slice(0,10)}</th>
+                    <td><img src={item.image} alt="" className="small-img"/></td>
+                    <td>{item.name}</td>
+                    <td>{item.amount}</td>
+                    <td>{item.cost}</td>
+                    <td>{item.date.slice(0,10)}</td>
                 </tr>  
             )
         });
