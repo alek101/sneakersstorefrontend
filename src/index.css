@@ -13,21 +13,50 @@ code {
 }
 
 .App{
-  max-width: 1400px;
-  margin: 0px auto;
+  /* max-width: 1400px;
+  margin: 0px auto; */
+}
+
+.header{
+  background-color: rgb(90, 137, 238);
+  display: flex;
+  justify-content: space-between;
+  height: 70px;
+  line-height: 70px;
 }
 
 .links{
-  margin-right: 10px;
+  padding: 20px;
 }
 
 .links a{
-  margin-right: 10px;
+  margin-right: 30px;
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  transition: all 0.2s;
+}
+
+.links a:hover{
+  cursor: pointer;
+  color: red;
+  font-size: 24px;
+}
+
+.cart-img{
+  height: 20px;
+  width: 20px;
+}
+
+.cart-img:hover{
+  height: 24px;
+  width: 24px;
 }
 
 .product-image img{
   width: 300px;
-  height: auto;
+  height: 300px;
 }
 
 .product-list{
@@ -47,4 +76,22 @@ h1,h2,h3{
 table,form{
   margin: 5px auto;
   text-align: center;
+}
+
+.product-button{
+  background-color: white;
+  width: 100px;
+  height: 50px;
+  padding: 10px;
+  transition: all 0.2s;
+}
+
+.product-button:hover{
+  cursor: pointer;
+  background-color: rgb(190, 207, 245);
+}
+
+.cart-img-button{
+  height: 30px;
+  width: 30px;
 }

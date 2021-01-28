@@ -9,16 +9,19 @@ const Home = ({data}) => {
 
     return ( 
         <div className="products">
-            <h1>We are offering:</h1>
+            
             <div className="filter">
                 <label htmlFor="name_filter">Filter: </label>
                 <input type="text" name="name_filter" id="name_filter"
                         onKeyUp={(e)=>{setNameFilter(e.target.value)}}/>  
             </div>
-            
-            <div className="product-list">
-                {products}
+            <div>
+                <h1>We are offering:</h1>
+                <div className="product-list">
+                    {products}
+                </div>
             </div>
+            
         </div>
      );
 }
