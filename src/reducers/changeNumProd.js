@@ -3,6 +3,8 @@ const changeNumProdReducer = (state = 0, action) => {
     {
       case "CHANGE_NUM_PROD": 
         return state + action.payload;
+      case "CLEAR_NUM_PROD":
+        return state - state;
       default:
         return state;
     }

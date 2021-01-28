@@ -1,11 +1,10 @@
 import {useState} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
-import {changeNumProd,removeBasket,decreaseBasket,increaseBasket,clearBasket} from '../actions';
+import {changeNumProd,clearNumProd,removeBasket,decreaseBasket,increaseBasket,clearBasket} from '../actions';
 
 const Purchase = () => {
 
     let itemsBasket = useSelector(state=>state.basket);
-    const numInBasket = useSelector(state=>state.changeNumProd);
     const [customer_name,setCustomerName] = useState(null);
     const [customer_email,setCustomerEmail] = useState(null);
     const [messageToCustomer,setMessageToCustomer] = useState(null);
@@ -23,8 +22,8 @@ const Purchase = () => {
         dispatch(changeNumProd(-num));
         dispatch(removeBasket(id));
     }
-    const clearEntireBasket = (num) => {
-        dispatch(changeNumProd(-num));
+    const clearEntireBasket = () => {
+        dispatch(clearNumProd());
         dispatch(clearBasket());
     }
     
@@ -69,7 +68,7 @@ const Purchase = () => {
             }
             pastPurchases.push(newPurchase);
             localStorage.setItem('purchase',JSON.stringify(pastPurchases));
-            clearEntireBasket(numInBasket);
+            clearEntireBasket();
     }
 
     const fetchToBuy = async (url,options) =>{

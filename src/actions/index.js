@@ -5,6 +5,12 @@ export const changeNumProd = (num) =>{
         } 
 }
 
+export const clearNumProd = () =>{
+    return{
+            type: "CLEAR_NUM_PROD",
+        } 
+}
+
 export const addBasket = (product) =>{
     return{
             type: "ADD_BASKET",
