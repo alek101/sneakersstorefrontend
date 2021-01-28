@@ -23,6 +23,25 @@ const Purchase = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         
+        for (const item of itemsBasket) {
+            const boughtItem={
+                customer_name: customer_name,
+                customer_email: customer_email,
+                product_id: item.product_id,
+                amount: item.amount,
+                cost: item.amount
+            }
+
+            const fetchOptions={
+                method: 'POST',
+                headers: {"Content-type":"application/json"},
+                body: JSON.stringify(boughtItem)
+            }
+
+            const url='http://127.0.0.1:8000/api/purchase';
+
+            
+        }
     }
 
     let itemRow = itemsBasket.map(item=>{
