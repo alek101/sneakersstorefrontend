@@ -36,7 +36,7 @@ const Past = () => {
     
     return ( 
         <div className="purchase">
-            <h1>Past Purchases</h1>
+            <h1>Order History</h1>
             {pastPurchases && purchaseTables}
             
         </div>  

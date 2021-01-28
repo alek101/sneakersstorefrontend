@@ -16,7 +16,7 @@ const Home = ({data}) => {
                         onKeyUp={(e)=>{setNameFilter(e.target.value)}}/>  
             </div>
             <div className="product-list-body">
-                <h1>We are offering:</h1>
+                <h1>We are offering</h1>
                 <div className="product-list">
                     {products}
                 </div>
