@@ -18,9 +18,11 @@ const Purchase = () => {
         dispatch(changeNumProd(-num));
         dispatch(removeBasket(id));
     }
-    const [customer,setCustomer] = useState(null);
-    const getCustomerData = (e) => {
-        setCustomer({[e.target.name]:e.target.value});
+    const [customer_name,setCustomerName] = useState(null);
+    const [customer_email,setCustomerEmail] = useState(null);
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        
     }
 
     let itemRow = itemsBasket.map(item=>{
@@ -55,13 +57,13 @@ const Purchase = () => {
                </tbody>
             </table>
             <h3>Buyer Info</h3>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <label htmlFor="customer_name">Name</label>
                 <input type="text" name="customer_name" id="customer_name" required
-                    onChange={(e)=>{getCustomerData(e)}}/>
+                    onChange={(e)=>{setCustomerName(e.target.value)}}/>
                 <label htmlFor="customer_email">Email</label>
                 <input type="email" name="customer_email" id="customer_email" required
-                    onChange={(e)=>{getCustomerData(e)}}/>
+                    onChange={(e)=>{setCustomerEmail(e.target.value)}}/>
                 <button className="big-purchase-button">Purchase</button>
             </form>
             
