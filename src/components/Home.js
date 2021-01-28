@@ -2,7 +2,8 @@ import Product from './Product';
 
 const Home = ({data}) => {
 
-    const products=(data)? data.map(product=><Product key={product.id} product={product} />):<div className="loading">Loading...</div>;
+    const products=(data)? data.map(product=><Product key={product.id} product={product} />):
+    <div className="loading">Loading...</div>;
 
     return ( 
         <div className="products">
