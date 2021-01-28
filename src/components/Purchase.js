@@ -39,14 +39,18 @@ const Purchase = () => {
             }
 
             const url='http://127.0.0.1:8000/api/purchase';
-            fetchToBuy(url,fetchOptions);
+            fetchToBuy(url,fetchOptions,item);
         }
     }
 
-    const fetchToBuy = async (url,options) =>{
-        const response= await fetch(url,options);
+    const fetchToBuy = async (url,options,item) =>{
+        const response = await fetch(url,options);
         const data = await response.json();
-        console.log(data);
+        if(data==='Purchase is done!')
+        {
+            removeFromBasket(item.amount,item.product_id);
+            
+        }
     }
 
     let itemRow = itemsBasket.map(item=>{
