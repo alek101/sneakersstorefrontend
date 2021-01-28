@@ -83,7 +83,7 @@ const Purchase = () => {
     
     return ( 
         <div className="purchase">
-            <h1>Purchase</h1>
+            <h1>User checkout:</h1>
             <table className="purchase-table">
                 <thead>
                     <tr>
