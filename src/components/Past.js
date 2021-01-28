@@ -17,7 +17,7 @@ const Past = () => {
     
     return ( 
         <div className="purchase">
-            <h1>Past</h1>
+            <h1>Past Purchases</h1>
             <table className="purchase-table">
                 <thead>
                     <tr>

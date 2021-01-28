@@ -1,5 +1,5 @@
-import {useSelector, useDispatch} from 'react-redux';
-import {changeNumProd,addBasket,removeBasket} from '../actions';
+import {useDispatch} from 'react-redux';
+import {changeNumProd,addBasket} from '../actions';
 
 const Product = ({product}) => {
     const dispatch=useDispatch();
@@ -7,9 +7,6 @@ const Product = ({product}) => {
         dispatch(changeNumProd(1));
         dispatch(addBasket(product));
     }
-    // const removeFromBasket =(id) =>{
-    //     dispatch(removeBasket(id))
-    // }
     return ( 
         <div className="product">
             <div className="product-name">{product.name}</div>
@@ -18,7 +15,6 @@ const Product = ({product}) => {
                 </div>
             <div className="product-cost">{product.cost}</div>
             <button className="product-button" onClick={() => addToBusket(product)}>Add</button>
-            {/* <button onClick={()=> removeFromBasket(product.id)}>Remove test</button> */}
         </div>
      );
 }
