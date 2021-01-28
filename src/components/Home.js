@@ -7,7 +7,7 @@ const Home = ({data}) => {
 
     return ( 
         <div className="products">
-            <h1>Products</h1>
+            <h1>We are offering:</h1>
             <div className="product-list">
                 {products}
             </div>

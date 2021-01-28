@@ -13,7 +13,7 @@ const Product = ({product}) => {
             <div className="product-image">
                 <img src={product.image} alt=""/>
                 </div>
-            <div className="product-cost">{product.cost}</div>
+            <div className="product-cost">Cost: {product.cost}</div>
             <button className="product-button" onClick={() => addToBusket(product)}>Add</button>
         </div>
      );

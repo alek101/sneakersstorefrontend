@@ -6,6 +6,7 @@ const Past = () => {
         itemRows = pastPurchases.map((item,i)=>{
             return(
                 <tr key={i}>
+                    <th><img src={item.image} alt="" className="small-img"/></th>
                     <th>{item.name}</th>
                     <th>{item.amount}</th>
                     <th>{item.cost}</th>
@@ -21,6 +22,7 @@ const Past = () => {
             <table className="purchase-table">
                 <thead>
                     <tr>
+                        <th>Image</th>
                         <th>Name of Product</th>
                         <th>Amount</th>
                         <th>Cost</th>

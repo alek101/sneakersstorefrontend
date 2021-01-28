@@ -70,13 +70,14 @@ const Purchase = () => {
     let itemRows = itemsBasket.map(item=>{
         return(
             <tr key={item.product_id}>
-            <th>{item.name}</th>
-            <th>{item.amount}</th>
-            <th>{item.cost}</th>
-            <th><button onClick={()=>decreaseFromBasket(item.product_id)}>-</button></th>
-            <th><button onClick={()=>increaseToBasket(item.product_id)}>+</button></th>
-            <th><button onClick={()=>removeFromBasket(item.amount,item.product_id)}>Remove</button></th>
-        </tr>  
+                <th><img src={item.image} alt="" className="small-img"/></th>
+                <th>{item.name}</th>
+                <th>{item.amount}</th>
+                <th>{item.cost}</th>
+                <th><button onClick={()=>decreaseFromBasket(item.product_id)}>-</button></th>
+                <th><button onClick={()=>increaseToBasket(item.product_id)}>+</button></th>
+                <th><button onClick={()=>removeFromBasket(item.amount,item.product_id)}>X</button></th>
+            </tr>  
         )
     });
     
@@ -86,12 +87,13 @@ const Purchase = () => {
             <table className="purchase-table">
                 <thead>
                     <tr>
+                        <th>Image</th>
                         <th>Name of Product</th>
                         <th>Amount</th>
                         <th>Cost</th>
-                        <th>Reduce</th>
-                        <th>Add</th>
-                        <th>Remove</th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
                     </tr> 
                 </thead>
                <tbody>
