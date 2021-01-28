@@ -22,32 +22,35 @@ const Purchase = () => {
     const [customer_email,setCustomerEmail] = useState(null);
     const handleSubmit = (e) => {
         e.preventDefault();
+    
+    const itemsBoughtArray=[];
+
+    for (const item of itemsBasket) {
+        const boughtItem={
+            customer_name: customer_name,
+            customer_email: customer_email,
+            product_id: item.product_id,
+            amount: item.amount,
+            cost: item.cost
+            }
         
-        for (const item of itemsBasket) {
-            const boughtItem={
-                customer_name: customer_name,
-                customer_email: customer_email,
-                product_id: item.product_id,
-                amount: item.amount,
-                cost: item.amount
-            }
-
-            const fetchOptions={
-                method: 'POST',
-                headers: {"Content-type":"application/json"},
-                body: JSON.stringify(boughtItem)
-            }
-
-            const url='http://127.0.0.1:8000/api/purchase';
-            fetchToBuy(url,fetchOptions,item);
+            itemsBoughtArray.push(boughtItem);
         }
+        
+        const sendToServer={itemsBoughtArray: itemsBoughtArray};
+
+        const fetchOptions={
+            method: 'POST',
+            headers: {"Content-type":"application/json"},
+            body: JSON.stringify(sendToServer)
+        }
+
+        const url='http://127.0.0.1:8000/api/purchaseMany';
+        fetchToBuy(url,fetchOptions);
     }
 
-    const fetchToBuy = async (url,options,item) =>{
-        const response = await fetch(url,options);
-        const data = await response.json();
-        if(data==='Purchase is done!')
-        {
+    const sendBasketIntoLocalStorage = (basket) => {
+        for (const item of basket) {
             removeFromBasket(item.amount,item.product_id);
             item.date=new Date();
             
@@ -63,8 +66,13 @@ const Purchase = () => {
                 pastPurchases.push(item);
                 localStorage.setItem('purchase',JSON.stringify(pastPurchases));
             }
-            
         }
+    }
+
+    const fetchToBuy = async (url,options) =>{
+        const response = await fetch(url,options);
+        const data = await response.json();
+        if(data==='Purchase is done!') sendBasketIntoLocalStorage(itemsBasket);   
     }
 
     let itemRows = itemsBasket.map(item=>{
