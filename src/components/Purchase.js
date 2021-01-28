@@ -20,6 +20,7 @@ const Purchase = () => {
     }
     const [customer_name,setCustomerName] = useState(null);
     const [customer_email,setCustomerEmail] = useState(null);
+    const [messageToCustomer,setMessageToCustomer] = useState(null);
     const handleSubmit = (e) => {
         e.preventDefault();
     
@@ -70,9 +71,16 @@ const Purchase = () => {
     }
 
     const fetchToBuy = async (url,options) =>{
+        setMessageToCustomer(null);
         const response = await fetch(url,options);
         const data = await response.json();
-        if(data==='Purchase is done!') sendBasketIntoLocalStorage(itemsBasket);   
+        if(data==='Purchase is done!'){
+           sendBasketIntoLocalStorage(itemsBasket);  
+           setMessageToCustomer('Purchase was completed succsesfully!');
+        } 
+        else{
+            setMessageToCustomer('There was error with purchase! Please try again.');
+        }  
     }
 
     let itemRows = itemsBasket.map(item=>{
@@ -118,6 +126,8 @@ const Purchase = () => {
                     onChange={(e)=>{setCustomerEmail(e.target.value)}}/>
                 <button className="big-purchase-button">Purchase</button>
             </form>
+
+            <div className="message">{messageToCustomer}</div>
             
         </div>
         
