@@ -4,8 +4,8 @@ import {changeNumProd,addBasket,removeBasket,decreaseBasket,increaseBasket} from
 
 const Purchase = () => {
 
-    const dispatch=useDispatch();
     let itemsBasket = useSelector(state=>state.basket);
+    const dispatch=useDispatch();
     const decreaseFromBasket = (id) => {
         dispatch(changeNumProd(-1));
         dispatch(decreaseBasket(id));
@@ -49,23 +49,25 @@ const Purchase = () => {
         if(data==='Purchase is done!')
         {
             removeFromBasket(item.amount,item.product_id);
+            item.date=new Date();
+            
             if(localStorage.getItem('purchase'))
             {
-                const pastPurchases=localStorage.getItem('purchase');
+                const pastPurchases=JSON.parse(localStorage.getItem('purchase'));
                 pastPurchases.push(item);
-                localStorage.setItem('purchase',pastPurchases);
+                localStorage.setItem('purchase',JSON.stringify(pastPurchases));
             }
             else
             {
                 const pastPurchases=[];
                 pastPurchases.push(item);
-                localStorage.setItem('purchase',pastPurchases);
+                localStorage.setItem('purchase',JSON.stringify(pastPurchases));
             }
-            console.log('local data',localStorage.getItem('purchase'));
+            
         }
     }
 
-    let itemRow = itemsBasket.map(item=>{
+    let itemRows = itemsBasket.map(item=>{
         return(
             <tr key={item.product_id}>
             <th>{item.name}</th>
@@ -93,7 +95,7 @@ const Purchase = () => {
                     </tr> 
                 </thead>
                <tbody>
-                   {itemsBasket && itemRow}
+                   {itemsBasket && itemRows}
                </tbody>
             </table>
             <h3>Buyer Info</h3>
