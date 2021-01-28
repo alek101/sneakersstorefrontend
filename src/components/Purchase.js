@@ -1,10 +1,15 @@
 import {useState} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
-import {changeNumProd,removeBasket,decreaseBasket,increaseBasket} from '../actions';
+import {changeNumProd,removeBasket,decreaseBasket,increaseBasket,clearBasket} from '../actions';
 
 const Purchase = () => {
 
     let itemsBasket = useSelector(state=>state.basket);
+    const numInBasket = useSelector(state=>state.changeNumProd);
+    const [customer_name,setCustomerName] = useState(null);
+    const [customer_email,setCustomerEmail] = useState(null);
+    const [messageToCustomer,setMessageToCustomer] = useState(null);
+
     const dispatch=useDispatch();
     const decreaseFromBasket = (id) => {
         dispatch(changeNumProd(-1));
@@ -18,23 +23,25 @@ const Purchase = () => {
         dispatch(changeNumProd(-num));
         dispatch(removeBasket(id));
     }
-    const [customer_name,setCustomerName] = useState(null);
-    const [customer_email,setCustomerEmail] = useState(null);
-    const [messageToCustomer,setMessageToCustomer] = useState(null);
+    const clearEntireBasket = (num) => {
+        dispatch(changeNumProd(-num));
+        dispatch(clearBasket());
+    }
+    
     const handleSubmit = (e) => {
         e.preventDefault();
     
-    const itemsBoughtArray=[];
+        const itemsBoughtArray=[];
 
-    for (const item of itemsBasket) {
-        const boughtItem={
-            customer_name: customer_name,
-            customer_email: customer_email,
-            product_id: item.product_id,
-            amount: item.amount,
-            cost: item.cost
-            }
-        
+        for (const item of itemsBasket) {
+            const boughtItem={
+                customer_name: customer_name,
+                customer_email: customer_email,
+                product_id: item.product_id,
+                amount: item.amount,
+                cost: item.cost
+                }
+            
             itemsBoughtArray.push(boughtItem);
         }
         
@@ -51,23 +58,33 @@ const Purchase = () => {
     }
 
     const sendBasketIntoLocalStorage = (basket) => {
-        for (const item of basket) {
-            removeFromBasket(item.amount,item.product_id);
-            item.date=new Date();
-            
-            if(localStorage.getItem('purchase'))
+            let totalCost=0;
+            for (const item of basket) {
+                item.date=new Date();
+                totalCost+=item.cost
+            }
+        
+        if(localStorage.getItem('purchase'))
             {
                 const pastPurchases=JSON.parse(localStorage.getItem('purchase'));
-                pastPurchases.push(item);
+                const newPurchase={
+                    basket:basket,
+                    totalCost:totalCost
+                }
+                pastPurchases.push(newPurchase);
                 localStorage.setItem('purchase',JSON.stringify(pastPurchases));
             }
             else
             {
                 const pastPurchases=[];
-                pastPurchases.push(item);
+                const newPurchase={
+                    basket:basket,
+                    totalCost:totalCost
+                }
+                pastPurchases.push(newPurchase);
                 localStorage.setItem('purchase',JSON.stringify(pastPurchases));
             }
-        }
+            clearEntireBasket(numInBasket);
     }
 
     const fetchToBuy = async (url,options) =>{

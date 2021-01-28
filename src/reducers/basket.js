@@ -56,7 +56,10 @@ const basketReducer = (state = [], action) => {
               state=state.filter(c=>true);
             }
         }
-      return state;
+        return state;
+      case "CLEAR_BASKET":
+          state=state.filter(purchase=>false);
+        return state;
       default:
         return state;
     }

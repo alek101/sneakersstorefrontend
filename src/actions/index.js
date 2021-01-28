@@ -32,3 +32,9 @@ export const increaseBasket = (id) =>{
             payload: id
         } 
 }
+
+export const clearBasket = () =>{
+    return{
+            type: "CLEAR_BASKET",
+        } 
+}
