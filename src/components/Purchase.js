@@ -49,7 +49,19 @@ const Purchase = () => {
         if(data==='Purchase is done!')
         {
             removeFromBasket(item.amount,item.product_id);
-            
+            if(localStorage.getItem('purchase'))
+            {
+                const pastPurchases=localStorage.getItem('purchase');
+                pastPurchases.push(item);
+                localStorage.setItem('purchase',pastPurchases);
+            }
+            else
+            {
+                const pastPurchases=[];
+                pastPurchases.push(item);
+                localStorage.setItem('purchase',pastPurchases);
+            }
+            console.log('local data',localStorage.getItem('purchase'));
         }
     }
 
