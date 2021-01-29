@@ -8,7 +8,7 @@ const Home = ({data}) => {
     .includes(nameFilter.toLowerCase()))
     .map((product,i)=><Product key={i} product={product} />):
     <div className="loading">Loading...</div>;
-    if(products.length===0) products=<div className="loading">No search results...</div>;
+    if(products.length===0) products=<div className="loading">No results...</div>;
 
     return ( 
         <div className="products">
