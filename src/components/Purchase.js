@@ -100,7 +100,7 @@ const Purchase = () => {
     
     return ( 
         <div className="purchase">
-            <h1>Basket</h1>
+            <h1>Shooping Cart</h1>
             <table className="purchase-table">
                 <thead>
                     <tr>
@@ -117,7 +117,7 @@ const Purchase = () => {
                    {itemsBasket && itemRows}
                </tbody>
             </table>
-            <h3>Buyer Info</h3>
+            <h3>Buyer's Info</h3>
             <form onSubmit={handleSubmit}>
                 <p className="buyers-info">
                     <label htmlFor="customer_name">Name</label>

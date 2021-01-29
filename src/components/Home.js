@@ -4,14 +4,17 @@ import Product from './Product';
 const Home = ({data}) => {
 
     const [nameFilter,setNameFilter] = useState("");
-    const products=(data)? data.filter(product=>product.name.toLowerCase().includes(nameFilter.toLowerCase())).map((product,i)=><Product key={i} product={product} />):
+    let products=(data)? data.filter(product=>product.name.toLowerCase()
+    .includes(nameFilter.toLowerCase()))
+    .map((product,i)=><Product key={i} product={product} />):
     <div className="loading">Loading...</div>;
+    if(products.length===0) products=<div className="loading">No search results...</div>;
 
     return ( 
         <div className="products">
             
             <div className="filter">
-                <label htmlFor="name_filter">Filter: </label>
+                <label htmlFor="name_filter">Filter</label>
                 <input type="text" name="name_filter" id="name_filter"
                         onKeyUp={(e)=>{setNameFilter(e.target.value)}}/>  
             </div>

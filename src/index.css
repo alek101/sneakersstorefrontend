@@ -195,6 +195,10 @@ label{
   text-align: center;
 }
 
+.loading{
+  margin-left: 50px;
+}
+
 ::-webkit-scrollbar{
     width: 10px;
 }
