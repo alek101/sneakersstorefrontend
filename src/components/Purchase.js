@@ -125,7 +125,10 @@ const Purchase = () => {
                 <label htmlFor="customer_email">Email</label>
                 <input type="email" name="customer_email" id="customer_email" required
                     onChange={(e)=>{setCustomerEmail(e.target.value)}}/>
-                <button className="big-purchase-button">Purchase</button>
+                <p>
+                    <button className="big-purchase-button">Purchase</button> 
+                </p>
+                
             </form>
 
             <div className="message">{messageToCustomer}</div>

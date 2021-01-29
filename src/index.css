@@ -93,14 +93,14 @@ body {
 }
 
 .product:hover{
-  border: 1px solid black;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .product-name{
   text-align: center;
   font-weight: bold;
   text-transform: uppercase;
-  margin-bottom: 20px;
+  margin: 10px 0px;
 }
 
 .small-img{
@@ -128,12 +128,15 @@ body {
 
 .big-purchase-button{
   background-color: white;
+  width: 100px;
+  height: 30px;
   transition: all 0.2s;
 }
 
 .big-purchase-button:hover{
   cursor: pointer;
   background-color: var(--color-3);
+  color: white;
 }
 
 .message{
@@ -176,7 +179,6 @@ td button:hover{
   background-color:var(--color-3);
   border-color: var(--color-3);
   color: white;
-  font-weight: bold;
 }
 
 input{
