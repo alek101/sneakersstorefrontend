@@ -1,6 +1,10 @@
 # new rep
  code test
 
--turn on laravel
--npm install
--npm run start
+1. turn on laravel
+2. npm install
+3. npm run start
+
+Backend: https://github.com/alek101/SnikersStoreBackend
+
+Aleksandar Petrović
