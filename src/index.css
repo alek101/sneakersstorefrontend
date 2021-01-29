@@ -19,9 +19,9 @@ body {
 }
 
 :root{
-  --color-1:  rgb(90, 137, 238);
-  --color-2:  rgb(190, 207, 245);
-  --color-3: rgb(236, 158, 158);
+  --color-1:  #5a89ee;
+  --color-2:  #eebd5a;
+  --color-3:  #ee725a;
 }
 
 .header{
@@ -158,7 +158,7 @@ table{
 }
 
 th{
-  background-color: var(--color-1);
+  background-color: var(--color-2);
   padding: 15px;
 }
 
@@ -193,4 +193,60 @@ label{
 .belowe-table{
   margin: 10px 0px 30px;
   text-align: center;
+}
+
+::-webkit-scrollbar{
+    width: 10px;
+}
+
+::-webkit-scrollbar:hover{
+  cursor: pointer;
+}
+
+::-webkit-scrollbar-thumb{
+    background-color: var(--color-2);
+}
+
+::-webkit-scrollbar-track{
+    -webkit-box-shadow: inset 0 0 6px;
+    background-color: white;
+}
+
+@media screen and (max-width: 550px)
+{
+  .header{
+    justify-content: space-evenly;
+  }
+
+  .products{
+    flex-direction: column;
+  }
+
+  .filter{
+    padding-top: 10px;
+    min-height: auto;
+    flex: 0 0 40px;
+  }
+
+  .buyers-info{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media screen and (max-width: 375px)
+{
+  .header{
+    line-height: normal;
+  }
+
+  .product{
+    height: 350px;
+  }
+
+  .product-image img{
+    width: 200px;
+    height: 200px;
+  }
 }

@@ -100,7 +100,7 @@ const Purchase = () => {
     
     return ( 
         <div className="purchase">
-            <h1>User checkout:</h1>
+            <h1>Basket</h1>
             <table className="purchase-table">
                 <thead>
                     <tr>
@@ -119,12 +119,14 @@ const Purchase = () => {
             </table>
             <h3>Buyer Info</h3>
             <form onSubmit={handleSubmit}>
-                <label htmlFor="customer_name">Name</label>
-                <input type="text" name="customer_name" id="customer_name" required
-                    onChange={(e)=>{setCustomerName(e.target.value)}}/>
-                <label htmlFor="customer_email">Email</label>
-                <input type="email" name="customer_email" id="customer_email" required
-                    onChange={(e)=>{setCustomerEmail(e.target.value)}}/>
+                <p className="buyers-info">
+                    <label htmlFor="customer_name">Name</label>
+                    <input type="text" name="customer_name" id="customer_name" required
+                        onChange={(e)=>{setCustomerName(e.target.value)}}/>
+                    <label htmlFor="customer_email">Email</label>
+                    <input type="email" name="customer_email" id="customer_email" required
+                        onChange={(e)=>{setCustomerEmail(e.target.value)}}/>
+                </p>
                 <p>
                     <button className="big-purchase-button">Purchase</button> 
                 </p>
