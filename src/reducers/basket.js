@@ -36,8 +36,6 @@ const basketReducer = (state = [], action) => {
               {
                 purchase.cost-=purchase.cost/purchase.amount;
                 purchase.amount--;
-                //https://redux.js.org/recipes/troubleshooting
-                //this is to avoid state unmutability, not reccomended
                 state=state.filter(c=>true);
               }
               else
