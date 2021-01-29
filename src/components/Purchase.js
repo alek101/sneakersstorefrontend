@@ -1,6 +1,7 @@
 import {useState} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import {changeNumProd,clearNumProd,removeBasket,decreaseBasket,increaseBasket,clearBasket} from '../actions';
+import {formatPrice} from '../format';
 
 const Purchase = () => {
 
@@ -90,7 +91,7 @@ const Purchase = () => {
                 <td><img src={item.image} alt="" className="small-img"/></td>
                 <td>{item.name}</td>
                 <td>{item.amount}</td>
-                <td>{item.cost}</td>
+                <td>{formatPrice(item.cost,'en-EN')}</td>
                 {/* <td><button onClick={()=>decreaseFromBasket(item.product_id)}>-</button></td> */}
                 {/* <td><button onClick={()=>increaseToBasket(item.product_id)}>+</button></td> */}
                 <td><button onClick={()=>removeFromBasket(item.amount,item.product_id)}>X</button></td>

@@ -1,3 +1,5 @@
+import {formatPrice,formatDate} from '../format';
+
 const Past = () => {
     let purchaseTables=null;
     const pastPurchases=JSON.parse(localStorage.getItem('purchase'));
@@ -22,13 +24,13 @@ const Past = () => {
                                         <td><img src={item.image} alt="" className="small-img"/></td>
                                         <td>{item.name}</td>
                                         <td>{item.amount}</td>
-                                        <td>{item.cost}</td>
+                                        <td>{formatPrice(item.cost,'en-EN')}</td>
                                     </tr>  
                                 )
                             })}
                         </tbody>
                     </table>
-                    <div className="belowe-table">Total cost of the purchase on {purchase.date.slice(0,10)} was {purchase.totalCost}</div>
+                    <div className="belowe-table">Total cost of the purchase on {formatDate(purchase.date,'en-EN')} was {formatPrice(purchase.totalCost,'en-EN')}</div>
                 </div>
             )
         });
