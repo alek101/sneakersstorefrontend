@@ -11,14 +11,14 @@ const Purchase = () => {
     const [messageToCustomer,setMessageToCustomer] = useState(null);
 
     const dispatch=useDispatch();
-    // const decreaseFromBasket = (id) => {
-    //     dispatch(changeNumProd(-1));
-    //     dispatch(decreaseBasket(id));
-    // }
-    // const increaseToBasket = (id) => {
-    //     dispatch(changeNumProd(1));
-    //     dispatch(increaseBasket(id));
-    // }
+    const decreaseFromBasket = (id) => {
+        dispatch(changeNumProd(-1));
+        dispatch(decreaseBasket(id));
+    }
+    const increaseToBasket = (id) => {
+        dispatch(changeNumProd(1));
+        dispatch(increaseBasket(id));
+    }
     const removeFromBasket = (num, id) => {
         dispatch(changeNumProd(-num));
         dispatch(removeBasket(id));
@@ -45,12 +45,10 @@ const Purchase = () => {
             itemsBoughtArray.push(boughtItem);
         }
         
-        const sendToServer={itemsBoughtArray: itemsBoughtArray};
-
         const fetchOptions={
             method: 'POST',
             headers: {"Content-type":"application/json"},
-            body: JSON.stringify(sendToServer)
+            body: JSON.stringify({itemsBoughtArray: itemsBoughtArray})
         }
 
         const url='http://127.0.0.1:8000/api/purchaseMany';
@@ -76,6 +74,7 @@ const Purchase = () => {
         setMessageToCustomer(null);
         const response = await fetch(url,options);
         const data = await response.json();
+        console.log(data);
         if(data==='Purchase is done!'){
            sendBasketIntoLocalStorage(itemsBasket);  
            setMessageToCustomer('Purchase was completed succsesfully!');
@@ -92,8 +91,8 @@ const Purchase = () => {
                 <td>{item.name}</td>
                 <td>{item.amount}</td>
                 <td>{formatPrice(item.cost,'en-EN')}</td>
-                {/* <td><button onClick={()=>decreaseFromBasket(item.product_id)}>-</button></td> */}
-                {/* <td><button onClick={()=>increaseToBasket(item.product_id)}>+</button></td> */}
+                <td><button onClick={()=>decreaseFromBasket(item.product_id)}>-</button></td>
+                <td><button onClick={()=>increaseToBasket(item.product_id)}>+</button></td>
                 <td><button onClick={()=>removeFromBasket(item.amount,item.product_id)}>X</button></td>
             </tr>  
         )
@@ -109,8 +108,8 @@ const Purchase = () => {
                         <th>Name of Product</th>
                         <th>Amount</th>
                         <th>Cost</th>
-                        {/* <th></th> */}
-                        {/* <th></th> */}
+                        <th></th>
+                        <th></th>
                         <th></th>
                     </tr> 
                 </thead>
